@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- 54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com -->
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Willkommen bei MatheMatheMathe!{% endblock %}</title>
@@ -10,12 +11,17 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
 
+        <!-- LaTex -->
         <script type="text/x-mathjax-config">
             MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
         </script>
         <script type="text/javascript" async
                 src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
         </script>
+
+        <!-- Google Sign-In -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com">
 
     </head>
     <body>

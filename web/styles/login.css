@@ -1,0 +1,18 @@
+#loginbox {
+    margin-left: 40%;
+    margin-top: 2%;
+    width: 20%;
+}
+
+.fb-login-button {
+    float: right;
+}
+
+.g-signin2 {
+    float: left;
+    clear-after: both;
+}
+
+.local {
+    float: none;
+}

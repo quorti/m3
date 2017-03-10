@@ -19,7 +19,7 @@ li {
     text-transform: none;
 
     white-space: nowrap;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
 .navigation a {
