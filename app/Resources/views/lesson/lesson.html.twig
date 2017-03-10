@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/lesson.css') }}">
+{% endblock %}
+
+{% block body %}
+    <iframe width="560" height="315" src="{{ link }}" frameborder="0" allowfullscreen></iframe>
+    <h2 id="contentHeader">
+        {{ name }}
+    </h2>
+    <div id="content">
+        {{ content }}
+    </div>
+{#
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+    aasdasd <br />
+#}
+    <div class="preNext">
+        <a href="/lesson/{{ previousID }}" id="previous">{{ previousText }} {{ previousName }}</a>
+        <a href="/lesson/{{ nextID }}" id="next">{{ nextName }} {{ nextText }}</a>
+    </div>
+{% endblock %}

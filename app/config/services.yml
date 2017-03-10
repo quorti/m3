@@ -1,0 +1,16 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+  file_directory: 'lesson_files'
+
+services:
+  app.file_uploader:
+    class: AppBundle\Service\FileUploadService
+    arguments: ['%file_directory%']
+
+  app.navigation:
+    class: AppBundle\Service\NavigationService
+    arguments: [ "@doctrine.orm.entity_manager" ]
+
+  app.user_webservice_provider:
+    class: AppBundle\Security\Provider\UserWebserviceProvider

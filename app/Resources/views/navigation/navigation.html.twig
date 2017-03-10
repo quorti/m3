@@ -1,0 +1,14 @@
+<ul class="navigation">
+    <li><a href="{{ path('about_me') }}">Über mich</a></li>
+    <li class="dropdown">
+        Lessons
+
+
+        <div class="dropdown-content">
+            {{ render(controller(
+                'AppBundle:Navigation:get'
+            )) }}
+        </div>
+    </li>
+    <li id="login"><a href="#">Login</a></li>
+</ul>

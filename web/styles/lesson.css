@@ -1,0 +1,39 @@
+
+iframe {
+    float: left;
+    margin-right: 5px;
+}
+
+.preNext {
+
+}
+
+.preNext a {
+    color: black;
+    text-decoration: none;
+}
+
+.preNext a:hover {
+    font-size: larger;
+}
+
+#next {
+    position: absolute;
+    bottom: 1%;
+    float: right;
+    right: 1%;
+}
+
+#previous {
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+}
+
+#contentHeader {
+    text-align: center;
+}
+
+#content {
+    color: gold;
+}

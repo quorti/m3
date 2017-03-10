@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Willkommen bei MatheMatheMathe!{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/base.css') }}" />
+        <link rel="stylesheet" href="{{ asset('styles/navigation.css') }}">
+            <script type="text/javascript" srd="{{ asset('TypeScript/cookieWarning.js') }}"></script>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript" async
+                src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+        </script>
+
+    </head>
+    <body>
+        <p class="headline">
+            <h1>
+                <a href="/"><img src="{{ asset('images/logo.png') }}" alt="icon"></a>
+                MatheMatheMathe.de
+            </h1>
+        </p>
+        <p>
+            {% block navigation %}
+            {#
+            #}
+                {{ include('navigation/navigation.html.twig') }}
+            {% endblock %}
+        </p>
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
+        <div class="footer">
+            <div id="cookiesWarning"></div>
+            <script language="JavaScript" type="text/javascript">
+                checkCookieExist();
+            </script>
+            <div id="quorticious">A <a href="http://www.google.com?q=quorticious">quorticious</a> Project</div>
+            <a href="" id="impressum">Impressum</a>
+        </div>
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>

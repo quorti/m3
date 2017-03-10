@@ -1,0 +1,85 @@
+ul {
+    overflow: auto;
+}
+
+li {
+    display: inline;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+.navigation {
+    overflow: hidden;
+    font-size: larger;
+    background-color: #555555;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    color: #EEE;
+    padding: 1% 0px 1% 0px;
+    margin: 0;
+    text-transform: none;
+
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.navigation a {
+    display: inline;
+    padding: 10px;
+    margin: 0px 0 0px 0;
+    color: #EEE;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.navigation a:hover  {
+    background-color: #666666;
+    size: auto;
+}
+
+.navigation a:visited {
+    color: inherit;
+    font-style: inherit;
+}
+
+.navigation:after {
+    clear: both;
+}
+
+.dropdown {
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    left: inherit;
+    background-color: #555554;
+    white-space: normal;
+    width: 70%;
+    margin-top: 0;
+    padding: 0.8% 0 0.8% 0;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    display: inline;
+    z-index: 50;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+    position: fixed;
+    z-index: 50;
+}
+
+.dropdown-subcontent {
+    padding: 20px;
+}
+
+#login {
+    float: right;
+}
+
+.navContent {
+    float: left;
+}

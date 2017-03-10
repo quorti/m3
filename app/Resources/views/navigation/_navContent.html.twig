@@ -1,0 +1,3 @@
+{% for lesson in lessons %}
+    <a href="{{ path('lesson', {'id': lesson.id}) }}" class="dropdown-subcontent">{{ lesson.navName }}</a>
+{% endfor %}

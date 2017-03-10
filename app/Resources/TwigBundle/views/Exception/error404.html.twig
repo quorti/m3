@@ -1,0 +1,15 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>404 - die Seite wurde nicht gefunden</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        Oje ! - da wurde wohl durch 0 geteilt. <br />
+        Schnell <a href="{{ path('homepage') }}">zurück zur Homepage</a>.
+    </p>
+{% endblock %}
