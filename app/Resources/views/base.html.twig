@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-<!-- 54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com -->
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Willkommen bei MatheMatheMathe!{% endblock %}</title>
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/base.css') }}" />
         <link rel="stylesheet" href="{{ asset('styles/navigation.css') }}">
-            <script type="text/javascript" srd="{{ asset('TypeScript/cookieWarning.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('TypeScript/cookieWarning.js') }}"></script>
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
         <!-- LaTex -->
         <script type="text/x-mathjax-config">
@@ -18,11 +17,6 @@
         <script type="text/javascript" async
                 src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
         </script>
-
-        <!-- Google Sign-In -->
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com">
-
     </head>
     <body>
         <p class="headline">
@@ -42,12 +36,13 @@
             {% block body %}{% endblock %}
         </div>
         <div class="footer">
-            <div id="cookiesWarning"></div>
+            <div id="quorticious">A <a href="http://www.google.com?q=quorticious">quorticious</a> Project</div>
+            <a href="" id="impressum">Impressum</a>
+        </div>
+        <div id="cookiesWarning">
             <script language="JavaScript" type="text/javascript">
                 checkCookieExist();
             </script>
-            <div id="quorticious">A <a href="http://www.google.com?q=quorticious">quorticious</a> Project</div>
-            <a href="" id="impressum">Impressum</a>
         </div>
         {% block javascripts %}
         {% endblock %}

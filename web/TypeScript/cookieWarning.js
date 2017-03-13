@@ -69,17 +69,17 @@ function checkCookiesEnabled() {
 function acceptCookies() {
     "use strict";
     document.getElementById("cookiesWarning").appendChild(newCookiesWarningDiv).setAttribute("id", "cookiesWarningActive");
-    document.getElementById("cookiesWarningActive").innerHTML = "<strong id='text'>We would like to place cookies on your computer to help us make this website better. </strong><span id='readMoreURL'></span><form name='cookieAgreement'><input type='checkbox' name='agreed' value='Agreed' class='checkbox'><span class='acceptance'>I accept cookies from this site.</span><input type='submit' value='Continue' onclick='getAgreementValue(); return false;' class='button'></form>";
+    document.getElementById("cookiesWarningActive").innerHTML = "<strong id='text'>Auch Mathematiker brauchen Kekse. Durch die Nutzung stimmst du zu, dass wir deine benutzen dürfen.</strong><span id='readMoreURL'></span><br/><strong><a id='cookiesAgreement' onclick='getAgreementValue()'>Hier, nehmt meine Kekse!</a> </strong>";
     // Change the URL of "Read more..." here
-    document.getElementById("readMoreURL").innerHTML = "<a href='https://ico.org.uk/for-organisations/guide-to-pecr/cookies/' title='ICO - New EU cookie law (e-Privacy Directive)' target='_blank' rel='nofollow'>Read more...</a>";
+    document.getElementById("readMoreURL").innerHTML = "<a href='https://www.google.com/policies/technologies/cookies/' title='So verwendet Google Cookies' target='_blank' rel='nofollow'>Zeig mir mehr dazu!</a>";
 }
 function acceptCookiesTickBoxWarning() {
     "use strict";
     setCookie("TestCookie", "Yes", "", "1 Jan 2000 00:00:00");
     document.getElementById("cookiesWarning").appendChild(newCookiesWarningDiv).setAttribute("id", "cookiesWarningActive");
-    document.getElementById("cookiesWarningActive").innerHTML = "<strong id='text'>We would like to place cookies on your computer to help us make this website better. </strong><span id='readMoreURL'></span><form name='cookieAgreement'><p id='warning'><small>You must tick the 'I accept cookies from this site' box to accept. If you continue without changing your settings, we'll assume that you agree to receive all cookies on this website.</small></p><input type='checkbox' name='agreed' value='Agreed' class='checkbox'><span class='acceptance'>I accept cookies from this site.</span><input type='submit' value='Continue' onclick='getAgreementValue()' class='button'></form>";
+    document.getElementById("cookiesWarningActive").innerHTML = "<strong id='text'>Auch Mathematiker brauchen Kekse. Durch die Nutzung stimmst du zu, dass wir deine benutzen dürfen.</strong><span id='readMoreURL'></span><form name='cookieAgreement'><p id='warning'><small>Bitte aktivere die Checkbox!</small></p><input type='checkbox' name='agreed' value='Agreed' class='checkbox'><span class='acceptance'>Hier, nehmt meine Kekse!</span><input type='submit' value='Continue' onclick='getAgreementValue()' class='button'></form>";
     // Change the URL of "Read more..." here
-    document.getElementById("readMoreURL").innerHTML = "<a href='https://ico.org.uk/for-organisations/guide-to-pecr/cookies/' title='ICO - New EU cookie law (e-Privacy Directive)' target='_blank' rel='nofollow'>Read more...</a>";
+    document.getElementById("readMoreURL").innerHTML = "<a href='https://www.google.com/policies/technologies/cookies/' title='So verwendet Google Cookies' target='_blank' rel='nofollow'>Zeig mir mehr dazu!</a>";
 }
 // Check if cookie has been set before //
 function checkCookieExist() {
@@ -97,12 +97,14 @@ function checkCookieExist() {
     else {
         // Display warning if cookies are disabled on browser
         document.getElementById("cookiesWarning").appendChild(newCookiesWarningDiv).setAttribute("id", "cookiesWarningActive");
-        document.getElementById("cookiesWarningActive").innerHTML = "<span id='cookiesDisabled'><strong>Cookies are disabled. We use cookies to give you the best online experience.</strong><br /> Your browser currently not accepting cookies.</span>";
+        document.getElementById("cookiesWarningActive").innerHTML = "<span id='cookiesDisabled'><strong>Cookies sind nicht aktiviert. Bitte aktiviere Cookies, damit wir dir das bestmögliche Erlebnis liefern können.</strong><br /> Dein Browser akzeptiert derzeit keine Cookies.</span>";
     }
 }
 // Get agreement results
 function getAgreementValue() {
     "use strict";
+    document.getElementById("cookiesWarning").innerHTML = "";
+    setCookie("TestCookie", "Yes", "", "");
     // If agreement box has been checked, set permanent cookie on visitors computer
     /*if (document.cookieAgreement.agreed.checked) {
         // Hide agreement form
@@ -110,7 +112,7 @@ function getAgreementValue() {
         setCookie("TestCookie", "Yes", "", "");
     } else {*/
     // If agreement box hasn't been checked, delete cookie (if exist) and add extra warning to HTML form
-    acceptCookiesTickBoxWarning();
+    //acceptCookiesTickBoxWarning();
     //}
 }
 //# sourceMappingURL=cookieWarning.js.map

@@ -2,6 +2,10 @@
  * Created by yorrickschwappacher on 19.10.16.
  */
 
+function setAttribute() {
+
+}
+
 // Asign current date to variable //
 var currentDate = new Date();
 

@@ -6,8 +6,35 @@
 {% endblock %}
 
 {% block body %}
-    <!-- Facebook SDK -->
     <script>
+        var googleUser = {};
+        var startApp = function() {
+            gapi.load('auth2', function(){
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                auth2 = gapi.auth2.init({
+                    client_id: '54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
+                });
+                attachSignin(document.getElementById('googleLogin'));
+            });
+        };
+
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function(googleUser) {
+                    document.getElementById('name').innerText = "Signed in: " +
+                        googleUser.getBasicProfile().getName();
+                }, function(error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                });
+        }
+    </script>
+
+    <!-- Facebook SDK -->
+   <script>
         window.fbAsyncInit = function() {
             FB.init({
                 appId      : '1859614914308519',
@@ -34,15 +61,35 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
+    <!-- Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com">
+
     <div id="loginbox">
-    <!-- Google Login -->
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <!-- Google Login -->
+            <a id="googleLogin">
+                <div class="myGoogle">
+                    <img id="gImg" src="{{ asset('images/googleSmall.png') }}" width="32px" height="32px">
+                    <div id="gText">Mit Google anmelden</div>
+                </div>
+            </a>
+        <!div class="g-signin2" data-onsuccess="onSignIn"><!/div>
 
-    <!-- Facbook Login -->
-    <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+        <!-- Facbook Login -->
+            <a id="facebookLogin" onclick="FB.login()">
+                <div class="myfacebook">
+                    <img id="fbImg" src="{{ asset('images/fbSmall.png') }}" width="32px" height="32px">
+                    <div id="fbText">Mit Facebook anmelden</div>
+                </div>
+            </a>
+        <!div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"><!/div>
 
-    <div class="local">
-        {{ include('login/_form.html.twig') }}
+        <div class="local">
+            {{ include('login/_form.html.twig') }}
+            <div id="register">
+                Noch keinen Account? <a href="/">Hier anmelden</a>!
+            </div>
+        </div>
     </div>
-    </div>
+    <script>startApp();</script>
 {% endblock %}

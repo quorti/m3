@@ -42,6 +42,27 @@ class User
     private $password;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $salt;
+
+    /**
+     * @return mixed
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * @param mixed $salt
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+    }
+
+    /**
      * @return mixed
      */
     public function getPassword()

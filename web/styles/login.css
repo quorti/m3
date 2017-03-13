@@ -1,18 +1,80 @@
 #loginbox {
     margin-left: 40%;
     margin-top: 2%;
+    padding: 5px;
     width: 20%;
+    background-color: #555555;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    color: #EEE;
 }
 
-.fb-login-button {
-    float: right;
+#loginbox a {
+    text-decoration: none;
 }
 
-.g-signin2 {
-    float: left;
-    clear-after: both;
+#loginbox a:visited {
+    text-decoration: none;
+    color: #EEE;
 }
 
 .local {
-    float: none;
+    text-align: center;
 }
+
+#register a {
+    text-decoration: underline;
+}
+
+#register a:visited {
+    text-decoration: underline;
+}
+
+.myGoogle {
+    background-color: #DD4B39;/*#C82829;*/
+    color: white;
+    height: 100%;
+    margin-bottom: 2%;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+#gImg {
+    float: left;
+    text-align: left;
+}
+
+#gText {
+    line-height: 32px;
+    text-align: center;
+}
+
+#googleLogin:hover {
+    cursor: pointer;
+}
+
+.myfacebook {
+    background-color: #3b5998;
+    color: white;
+    height: 100%;
+    margin-bottom: 10%;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+#fbImg {
+    float: left;
+    text-align: left;
+}
+
+#fbText {
+    line-height: 32px;
+    text-align: center;
+}
+
+#facebookLogin:hover {
+    cursor: pointer;
+}
+
+#loginBtn {
+    margin-top: 10%;
+    margin-bottom: 2%;
+}
+
