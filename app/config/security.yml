@@ -8,9 +8,16 @@ security:
             memory: ~
         webservice:
           id: app.user_webservice_provider
+        fos_userbundle:
+          id: fos_user.user_provider.username
 
     encoders:
       AppBundle\Security\Webservice\UserWebservice: bcrypt
+      FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+            ROLE_ADMIN:       ROLE_USER
+            ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -23,6 +30,10 @@ security:
                 anonymous: ~
 
         main:
+            pattern: ^/
+            form_login:
+              provider: fos_userbundle
+              csrf_token_generator: security.csrf.token_manager
             anonymous: ~
             # activate different ways to authenticate
 
@@ -33,3 +44,7 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
     access_control:
       - {path: ^/localnetwork, roles: ROLE_USER_IP, ip: 192.168.178.20 }
+      - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/admin/, role: ROLE_ADMIN }

@@ -7,6 +7,7 @@
 
 {% block body %}
     <script>
+        var gapi;
         var googleUser = {};
         var startApp = function() {
             gapi.load('auth2', function(){
@@ -25,10 +26,29 @@
             console.log(element.id);
             auth2.attachClickHandler(element, {},
                 function(googleUser) {
-                    document.getElementById('name').innerText = "Signed in: " +
-                        googleUser.getBasicProfile().getName();
+                    /*document.getElementById('name').innerText = "Signed in: " +
+                        googleUser.getBasicProfile().getName();*/
+                    var profile = googleUser.getBasicProfile();
+                    var id = profile.getId();
+
+                    var id_token = googleUser.getAuthResponse().id_token;
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '{{ path('googleLogin') }}');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                        console.log('Signed in as: ' + xhr.responseText);
+                    };
+                    xhr.send('idtoken=' + id_token);
+
+                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    console.log('Name: ' + profile.getName());
+                    console.log('Image URL: ' + profile.getImageUrl());
+                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
                 }, function(error) {
-                    alert(JSON.stringify(error, undefined, 2));
+                    //alert(JSON.stringify(error, undefined, 2));
+                    document.getElementById('error').innerText = "Es ist ein Fehler aufgetreten";
                 });
         }
     </script>
@@ -67,9 +87,9 @@
 
     <div id="loginbox">
         <!-- Google Login -->
-            <a id="googleLogin">
+            <a id="googleLogin"> <!href="{{ path('googleLogin') }}">
                 <div class="myGoogle">
-                    <img id="gImg" src="{{ asset('images/googleSmall.png') }}" width="32px" height="32px">
+                    <img id="gImg" src="{{ asset('images/googleSmall.png') }}" width="32px" height="32px" alt="login with google">
                     <div id="gText">Mit Google anmelden</div>
                 </div>
             </a>
@@ -78,11 +98,15 @@
         <!-- Facbook Login -->
             <a id="facebookLogin" onclick="FB.login()">
                 <div class="myfacebook">
-                    <img id="fbImg" src="{{ asset('images/fbSmall.png') }}" width="32px" height="32px">
+                    <img id="fbImg" src="{{ asset('images/fbSmall.png') }}" width="32px" height="32px" alt="login with facebook">
                     <div id="fbText">Mit Facebook anmelden</div>
                 </div>
             </a>
         <!div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"><!/div>
+
+        <div id="error">
+
+        </div>
 
         <div class="local">
             {{ include('login/_form.html.twig') }}

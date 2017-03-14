@@ -6,9 +6,12 @@
 
         <div class="dropdown-content">
             {{ render(controller(
-                'AppBundle:Navigation:get'
+                'AppBundle:Navigation:getElements'
             )) }}
         </div>
     </li>
-    <li id="login"><a href="{{ path('login') }}">Login</a></li>
+
+    {{ render(controller(
+        'AppBundle:Navigation:setLoginState'
+    )) }}
 </ul>
