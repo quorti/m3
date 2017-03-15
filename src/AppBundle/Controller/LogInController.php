@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class LogInController extends Controller
 {
     /**
-     * @Route(path="/login", name="login")
+     * @Route(path="/signin", name="login")
      */
     public function indexAction(Request $request)
     {
@@ -35,17 +35,31 @@ class LogInController extends Controller
     }
 
     /**
-     * @Route(path="/login/google", name="googleLogin")
+     * @Route(path="/login/check-google", name="check-google")
      */
-    public function googleLogin(Request $request) {
+    public function checkGoogle(Request $request) {
         //$_SESSION['userid'] = 8;
         if(isset($_SESSION['userid'])) {
             $userid = $_SESSION['userid'];
         } else {
             $userid = "none";
         }
-        //return $this->redirectToRoute('homepage', array());
+        return $this->redirectToRoute('homepage', array());
 
-        return 'hello';
+        //return 'hello';
+    }
+
+    /**
+     * @Route(path="/login/check-facebook", name="check-facebook")
+     */
+    public function checkFacebook(Request $request) {
+        return $this->redirectToRoute('homepage', array());
+    }
+
+    /**
+     * @Route(path="/login/check-custom", name="check-custom")
+     */
+    public function checkCustom(Request $request) {
+
     }
 }

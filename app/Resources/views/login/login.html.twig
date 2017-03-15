@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block body %}
-    <script>
+
+   {# <script>
         var gapi;
         var googleUser = {};
         var startApp = function() {
@@ -34,7 +35,7 @@
                     var id_token = googleUser.getAuthResponse().id_token;
 
                     var xhr = new XMLHttpRequest();
-                    xhr.open('POST', '{{ path('googleLogin') }}');
+                    xhr.open('POST', '{{ path('check-google') }}');
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.onload = function() {
                         console.log('Signed in as: ' + xhr.responseText);
@@ -83,11 +84,11 @@
 
     <!-- Google Sign-In -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com">#}
 
     <div id="loginbox">
         <!-- Google Login -->
-            <a id="googleLogin"> <!href="{{ path('googleLogin') }}">
+            <a id="googleLogin" href="/connect/google" target="popup" onClick="javascript:open('', 'popup', 'height=400,width=600,resizable=no');"> <!href="{{ path('google_login') }}">
                 <div class="myGoogle">
                     <img id="gImg" src="{{ asset('images/googleSmall.png') }}" width="32px" height="32px" alt="login with google">
                     <div id="gText">Mit Google anmelden</div>
@@ -96,7 +97,7 @@
         <!div class="g-signin2" data-onsuccess="onSignIn"><!/div>
 
         <!-- Facbook Login -->
-            <a id="facebookLogin" onclick="FB.login()">
+            <a id="facebookLogin" href="{{ path('facebook_login') }}"> <! onclick="FB.login()">
                 <div class="myfacebook">
                     <img id="fbImg" src="{{ asset('images/fbSmall.png') }}" width="32px" height="32px" alt="login with facebook">
                     <div id="fbText">Mit Facebook anmelden</div>
@@ -115,5 +116,5 @@
             </div>
         </div>
     </div>
-    <script>startApp();</script>
+    <!--script>startApp();</script-->
 {% endblock %}

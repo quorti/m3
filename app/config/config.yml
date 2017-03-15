@@ -77,4 +77,24 @@ fos_user:
     user_class: AppBundle\Entity\User
     from_email:
         address: "%mailer_user%"
-        sender_name: "%mailer_name%"
+        sender_name: "%mailer_user%"
+
+# hwi OAuth Configuration
+hwi_oauth:
+    # list of names of the firewalls in which this bundle is active, this setting MUST be set
+    firewall_names: [secured_area]
+
+    resource_owners:
+        google:
+            type:                google
+            client_id:           54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com
+            client_secret:       YGXbH5AxlI7uxq4mzNI_XYfp
+            scope:               "email profile"
+
+        facebook:
+            type:                facebook
+            client_id:           1859614914308519
+            client_secret:       64221ce49c13ac4cf3e11495fb68ea95
+            options:
+                            display: popup #dialog is optimized for popup window
+                            auth_type: rerequest # Re-asking for Declined Permissions

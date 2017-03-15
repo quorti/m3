@@ -42,6 +42,18 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+        secured_area:
+                    anonymous: ~
+                    oauth:
+                        resource_owners:
+                            facebook:           "/login/check-facebook"
+                            google:             "/login/check-google"
+                        login_path:        /login
+                        use_forward:       false
+                        failure_path:      /login
+
+                        oauth_user_provider:
+                            service: my.oauth_aware.user_provider.service
     access_control:
       - {path: ^/localnetwork, roles: ROLE_USER_IP, ip: 192.168.178.20 }
       - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
