@@ -5,11 +5,8 @@ parameters:
 
 services:
   my.oauth_aware.user_provider.service:
-      #class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
-      #class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider
       class: AppBundle\Security\Provider\OAuthUserProvider
       arguments:
-          #- '@hwi_oauth.user.provider'
           - '@fos_user.user_manager'
           - [{facebook: facebookID, google: googleID}]
 
@@ -27,6 +24,8 @@ services:
     class: AppBundle\Service\NavigationService
     arguments: [ "@doctrine.orm.entity_manager" ]
 
-  app.user_webservice_provider:
-    class: AppBundle\Security\Provider\UserWebserviceProvider
+  app.form.registration:
+    class: AppBundle\Form\RegistrationType
+    tags:
+        - { name: form.type, alias: app_user_registration }
 

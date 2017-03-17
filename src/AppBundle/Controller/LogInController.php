@@ -13,7 +13,7 @@ use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 class LogInController extends Controller
 {
     /**
-     * @Route(path="/signin", name="login")
+     * @Route(path="/opel", name="login")
      */
     public function indexAction(Request $request)
     {

@@ -51,3 +51,5 @@ google_connect:
 custom_login:
     path: /login/check-custom
 
+logout:
+  path: /logout

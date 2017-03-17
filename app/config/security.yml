@@ -6,8 +6,6 @@ security:
     providers:
         in_memory:
             memory: ~
-        webservice:
-          id: app.user_webservice_provider
         fos_userbundle:
           id: fos_user.user_provider.username
 
@@ -27,7 +25,7 @@ security:
             csrf_token_generator: security.csrf.token_manager
           logout:
             path: fos_user_security_logout
-            target: /
+            target: /login
           oauth:
               resource_owners:
                   facebook:           "/login/check-facebook"

@@ -6,86 +6,6 @@
 {% endblock %}
 
 {% block body %}
-
-   {# <script>
-        var gapi;
-        var googleUser = {};
-        var startApp = function() {
-            gapi.load('auth2', function(){
-                // Retrieve the singleton for the GoogleAuth library and set up the client.
-                auth2 = gapi.auth2.init({
-                    client_id: '54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com',
-                    cookiepolicy: 'single_host_origin',
-                    // Request scopes in addition to 'profile' and 'email'
-                    //scope: 'additional_scope'
-                });
-                attachSignin(document.getElementById('googleLogin'));
-            });
-        };
-
-        function attachSignin(element) {
-            console.log(element.id);
-            auth2.attachClickHandler(element, {},
-                function(googleUser) {
-                    /*document.getElementById('name').innerText = "Signed in: " +
-                        googleUser.getBasicProfile().getName();*/
-                    var profile = googleUser.getBasicProfile();
-                    var id = profile.getId();
-
-                    var id_token = googleUser.getAuthResponse().id_token;
-
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('POST', '{{ path('check-google') }}');
-                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    xhr.onload = function() {
-                        console.log('Signed in as: ' + xhr.responseText);
-                    };
-                    xhr.send('idtoken=' + id_token);
-
-                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                    console.log('Name: ' + profile.getName());
-                    console.log('Image URL: ' + profile.getImageUrl());
-                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-
-                }, function(error) {
-                    //alert(JSON.stringify(error, undefined, 2));
-                    document.getElementById('error').innerText = "Es ist ein Fehler aufgetreten";
-                });
-        }
-    </script>
-
-    <!-- Facebook SDK -->
-   <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '1859614914308519',
-                xfbml      : true,
-                version    : 'v2.8'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.8";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-    <!-- Google Sign-In -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com">#}
-
     <div id="loginbox">
         <!-- Google Login -->
             <a id="googleLogin" href="{{ path('google_connect') }}">
@@ -94,7 +14,6 @@
                     <div id="gText">Mit Google anmelden</div>
                 </div>
             </a>
-        <!div class="g-signin2" data-onsuccess="onSignIn"><!/div>
 
         <!-- Facbook Login -->
             <a id="facebookLogin" href="{{ path('facebook_connect') }}"> <! onclick="FB.login()">
@@ -112,9 +31,8 @@
         <div class="local">
             {{ include('login/_form.html.twig') }}
             <div id="register">
-                Noch keinen Account? <a href="/">Hier anmelden</a>!
+                Noch keinen Account? <a href="/register">Hier anmelden</a>!
             </div>
         </div>
     </div>
-    <!--script>startApp();</script-->
 {% endblock %}

@@ -114,6 +114,18 @@ class User extends BaseUser
         $this->facebookId = $facebookId;
     }
 
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $email = is_null($email) ? '' : $email;
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
+
+
+
     /*private $name;
     private $email;
     private $password;
