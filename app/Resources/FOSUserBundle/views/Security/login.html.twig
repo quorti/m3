@@ -23,15 +23,11 @@
                 <div id="fbText">Mit Facebook anmelden</div>
             </div>
         </a>
-        <!div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"><!/div>
 
-        <div id="error">
-
-        </div>
         <div class="local">
             {{ include('@FOSUser/Security/login_content.html.twig') }}
             <div id="register">
-                Noch keinen Account? <a href="/register">Hier anmelden</a>!
+                Noch keinen Account? <a href="{{ path('register') }}">Hier anmelden</a>!
             </div>
         </div>
 

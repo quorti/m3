@@ -35,7 +35,7 @@
     color: white;
     height: 100%;
     margin-bottom: 2%;
-    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 #gImg {
@@ -57,7 +57,7 @@
     color: white;
     height: 100%;
     margin-bottom: 5%;
-    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 #fbImg {
@@ -84,5 +84,6 @@
 }
 
 #error {
-    color: red;
+    color: #EEE;
+    text-decoration: double;
 }

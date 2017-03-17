@@ -9,7 +9,6 @@
 namespace AppBundle\Service;
 
 
-use AppBundle\Entity\Lesson;
 use Doctrine\ORM\EntityManager;
 
 class NavigationService
@@ -39,6 +38,6 @@ class NavigationService
 
     public function __toString()
     {
-        return 'wtf?';
+        return 'NavigationService';
     }
 }
