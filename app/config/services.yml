@@ -4,6 +4,21 @@ parameters:
   file_directory: 'lesson_files'
 
 services:
+  my.oauth_aware.user_provider.service:
+      #class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
+      #class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider
+      class: AppBundle\Security\Provider\OAuthUserProvider
+      arguments:
+          #- '@hwi_oauth.user.provider'
+          - '@fos_user.user_manager'
+          - [{facebook: facebookID, google: googleID}]
+
+  app.provider.oauth:
+      class: AppBundle\Security\Provider\OAuthUserProvider
+      arguments:
+          - '@fos_user.user_manager'
+          - [{facebook: facebookID, google: googleID}]
+
   app.file_uploader:
     class: AppBundle\Service\FileUploadService
     arguments: ['%file_directory%']
@@ -15,8 +30,3 @@ services:
   app.user_webservice_provider:
     class: AppBundle\Security\Provider\UserWebserviceProvider
 
-  my.oauth_aware.user_provider.service:
-      class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
-      arguments:
-          - '@fos_user.user_manager'
-          - ['pass properties as array']

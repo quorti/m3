@@ -47,16 +47,18 @@ class LessonController extends Controller
 
         $form = $this->createForm(LessonType::class, $lesson);
         $form->handleRequest($request);
-        if ($form->isValid()) {
+        if($form->isSubmitted()) {
+            if ($form->isValid()) {
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($lesson);
-            $em->flush();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($lesson);
+                $em->flush();
 
-            $this->addFlash('Success', 'Lesson angelegt');
+                $this->addFlash('Success', 'Lesson angelegt');
 
-            //return $this->redirectToRoute('lesson_list', array());
-            return $this->redirectToRoute('homepage', array());
+                //return $this->redirectToRoute('lesson_list', array());
+                return $this->redirectToRoute('homepage', array());
+            }
         }
 
         return $this->render('lesson/new_lesson.html.twig', array(

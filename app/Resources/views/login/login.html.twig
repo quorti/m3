@@ -88,7 +88,7 @@
 
     <div id="loginbox">
         <!-- Google Login -->
-            <a id="googleLogin" href="/connect/google" target="popup" onClick="javascript:open('', 'popup', 'height=400,width=600,resizable=no');"> <!href="{{ path('google_login') }}">
+            <a id="googleLogin" href="{{ path('google_connect') }}">
                 <div class="myGoogle">
                     <img id="gImg" src="{{ asset('images/googleSmall.png') }}" width="32px" height="32px" alt="login with google">
                     <div id="gText">Mit Google anmelden</div>
@@ -97,7 +97,7 @@
         <!div class="g-signin2" data-onsuccess="onSignIn"><!/div>
 
         <!-- Facbook Login -->
-            <a id="facebookLogin" href="{{ path('facebook_login') }}"> <! onclick="FB.login()">
+            <a id="facebookLogin" href="{{ path('facebook_connect') }}"> <! onclick="FB.login()">
                 <div class="myfacebook">
                     <img id="fbImg" src="{{ asset('images/fbSmall.png') }}" width="32px" height="32px" alt="login with facebook">
                     <div id="fbText">Mit Facebook anmelden</div>

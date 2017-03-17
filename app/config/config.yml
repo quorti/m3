@@ -72,8 +72,8 @@ swiftmailer:
 
 # FoS User Configuration
 fos_user:
-    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-    firewall_name: main
+    db_driver: orm
+    firewall_name: secured_area
     user_class: AppBundle\Entity\User
     from_email:
         address: "%mailer_user%"
@@ -83,18 +83,32 @@ fos_user:
 hwi_oauth:
     # list of names of the firewalls in which this bundle is active, this setting MUST be set
     firewall_names: [secured_area]
-
+    fosub:
+      username_iterations: 30
+      properties:
+          facebook: facebook_id
+          google: google_id
     resource_owners:
         google:
             type:                google
             client_id:           54596075521-952hf81ufkm4qj26t4503pdb4u3kj492.apps.googleusercontent.com
             client_secret:       YGXbH5AxlI7uxq4mzNI_XYfp
-            scope:               "email profile"
+            redirect_url:        /login/check-google
+            #scope:               "email profile"
+            scope:              "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            options:
+              csrf: true
 
         facebook:
             type:                facebook
             client_id:           1859614914308519
             client_secret:       64221ce49c13ac4cf3e11495fb68ea95
+            scope:               "email"
             options:
-                            display: popup #dialog is optimized for popup window
-                            auth_type: rerequest # Re-asking for Declined Permissions
+              display: page #dialog is optimized for popup window
+              auth_type: rerequest # Re-asking for Declined Permissions
+              csrf: true
+            paths:
+              email: email
+
+

@@ -21,15 +21,22 @@ class DefaultController extends Controller
         $login = "";
         if(isset($_SESSION['userid'])) {
             $userid = $_SESSION['userid'];
-            $login = 'Logout';
         } else {
             $userid = "";
-            $login = 'Login';
         }
+
+//        $userid = $this->get('security.token_storage')->getToken()->getUser();
+        if($this->get('security.token_storage')->getToken()->getUser() != "anon.") {
+            $usr= $this->get('security.token_storage')->getToken()->getUser();
+            try {
+                $userid = $usr->getFirstname();
+            } catch (\Exception $exception) {
+                $userid = "oops";
+            }
+        }
+
         return $this->render('index.html.twig', [
-            'content' => 'Dies ist ein Test ' . $userid . '   ' . $login . ' ' . $request,
-            'navLessons' => '',
-                'login' => $login
+            'content' => 'Hallo ' . $userid
             ]
         );
     }

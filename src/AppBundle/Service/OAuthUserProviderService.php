@@ -19,6 +19,7 @@ class OAuthUserProviderService implements OAuthAwareUserProviderInterface
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         // TODO: Implement loadUserByOAuthUserResponse() method.
+        fprintf("wtf");
     }
 
 }
