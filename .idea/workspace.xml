@@ -107,7 +107,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="301">
               <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1490114449811" expanded="true" signature="295:354" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1183,7 +1185,7 @@
       <workItem from="1489671693010" duration="25000" />
       <workItem from="1489671738640" duration="12151000" />
       <workItem from="1489749507692" duration="22507000" />
-      <workItem from="1490111263207" duration="5121000" />
+      <workItem from="1490111263207" duration="5322000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented Base log in functions including Google and Facebook OAuth&#10;Added a shadow Box around the main Area">
       <created>1489162610448</created>
@@ -1227,11 +1229,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489774243026</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Edited the Lesson display regarding the previous/next section to be a bit nicer and fitting more to the corporate design&#10;Implemented the update of a lesson if the new created lesson has a previous and/or next lesson set to set the respective field&#10;Renamed &quot;Lesson&quot; on the page to &quot;Übung&quot;&#10;Set the new lesson creation form to be only accessible as admin&#10;Resized the headline picture so the afterwards loading is not as annoying as before">
+      <created>1490116584707</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1490116584707</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84538000" />
+    <option name="totallyTimeSpent" value="84739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -1272,7 +1281,8 @@
     <MESSAGE value="Implemented FOSUB login and registration included localized variables&#10;Removed the old WebServiceUser" />
     <MESSAGE value="Cleaned up the old app internal way to log in and left it to the FOS UserBundle" />
     <MESSAGE value="Cleaned up the old app internal way to log in and left it to the FOS UserBundle&#10;Removed several unused statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up the old app internal way to log in and left it to the FOS UserBundle&#10;Removed several unused statements" />
+    <MESSAGE value="Edited the Lesson display regarding the previous/next section to be a bit nicer and fitting more to the corporate design&#10;Implemented the update of a lesson if the new created lesson has a previous and/or next lesson set to set the respective field&#10;Renamed &quot;Lesson&quot; on the page to &quot;Übung&quot;&#10;Set the new lesson creation form to be only accessible as admin&#10;Resized the headline picture so the afterwards loading is not as annoying as before" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited the Lesson display regarding the previous/next section to be a bit nicer and fitting more to the corporate design&#10;Implemented the update of a lesson if the new created lesson has a previous and/or next lesson set to set the respective field&#10;Renamed &quot;Lesson&quot; on the page to &quot;Übung&quot;&#10;Set the new lesson creation form to be only accessible as admin&#10;Resized the headline picture so the afterwards loading is not as annoying as before" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1574,7 +1584,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1490114449811" expanded="true" signature="295:354" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
