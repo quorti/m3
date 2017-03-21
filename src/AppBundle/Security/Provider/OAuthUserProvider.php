@@ -46,12 +46,16 @@ class OAuthUserProvider extends BaseClass
                 $user->setPlainPassword(md5(uniqid()));
             }
 
-            //update the user if its already
+            //update the user if it persists already
             $user->setUsername($email);
             $user->setEmail($email);
             $user->setEnabled(true);
-            $user->setFirstname($response->getFirstName());
-            $user->setLastname($response->getLastName());
+            if(null == $user->getFirstname()) {
+                $user->setFirstname($response->getFirstName());
+            }
+            if(null == $user->getLastname()) {
+                $user->setLastname($response->getLastName());
+            }
 
             //then set its corresponding social id
             $service = $response->getResourceOwner()->getName();

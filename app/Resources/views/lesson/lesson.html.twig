@@ -6,6 +6,15 @@
 {% endblock %}
 
 {% block body %}
+
+    {% for type, messages in app.session.flashBag.all %}
+        {% for message in messages %}
+            <div class="{{ type }}">
+                {{ message|trans({}, 'FOSUserBundle') }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <iframe width="560" height="315" src="{{ link }}" frameborder="0" allowfullscreen></iframe>
     <h2 id="contentHeader">
         {{ name }}
@@ -32,8 +41,29 @@
     aasdasd <br />
     aasdasd <br />
 #}
-    <div class="preNext">
+    <!--div class="preNext">
         <a href="/lesson/{{ previousID }}" id="previous">{{ previousText }} {{ previousName }}</a>
         <a href="/lesson/{{ nextID }}" id="next">{{ nextName }} {{ nextText }}</a>
+    </div-->
+
+    <div class="preNext">
+        {% if previousID is not null %}
+            <a id="previous" href="/lesson/{{ previousID }}">
+                <div class="subPrevious">
+                    <img id="spImg" src="{{ asset('images/arrowLeft.png') }}" width="32px" height="32px" alt="previous lesson">
+                    <div id="spText">  {{ previousName }}  </div>
+                </div>
+            </a>
+        {% endif %}
+
+        {% if nextID is not null %}
+            <a id="next" href="/lesson/{{ nextID }}">
+                <div class="subNext">
+                    <div id="snText">{{ nextName }}</div>
+                    <img id="snImg" src="{{ asset('images/arrowRight.png') }}" width="32px" height="32px" alt="previous lesson">
+                </div>
+            </a>
+        {% endif %}
     </div>
+
 {% endblock %}

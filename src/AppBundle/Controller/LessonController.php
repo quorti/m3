@@ -25,11 +25,11 @@ class LessonController extends Controller
                     'link' => $lesson->getLink(),
                     'name' => $lesson->getName(),
                     'content' => $lesson->getContent(),
-                    'previousID' => ($hasPrevious ? $lesson->getPreviousLesson()->getId() : ''),
-                    'previousName' => ($hasPrevious ? $lesson->getPreviousLesson()->getName() : ''),
+                    'previousID' => ($hasPrevious ? $lesson->getPreviousLesson()->getId() : null),
+                    'previousName' => ($hasPrevious ? $lesson->getPreviousLesson()->getName() : null),
                     'previousText' => ($hasPrevious ? '<--' : ''),
-                    'nextID' => ($hasNext ? $lesson->getNextLesson()->getId() : ''),
-                    'nextName' => ($hasNext ? $lesson->getNextLesson()->getName() : ''),
+                    'nextID' => ($hasNext ? $lesson->getNextLesson()->getId() : null),
+                    'nextName' => ($hasNext ? $lesson->getNextLesson()->getName() : null),
                     'nextText' => ($hasNext ? '-->': '')
                 ));
         } else {
@@ -49,15 +49,42 @@ class LessonController extends Controller
         $form->handleRequest($request);
         if($form->isSubmitted()) {
             if ($form->isValid()) {
+                $success = true;
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($lesson);
-                $em->flush();
 
-                $this->addFlash('Success', 'Lesson angelegt');
+                //if previous lesson is set, set the previous' next lesson
+                if(null != $lesson->getPreviousLesson()) {
+                    $previousLesson = $em->find(Lesson::class, $lesson->getPreviousLesson()->getId());
+                    //check if the previous lesson already has a next lesson
+                    if(null == $previousLesson->getNextLesson()) {
+                        $previousLesson->setNextLesson($lesson);
+                    } else {
+                        $this->addFlash('Error', 'Der Vorgänger hat bereits einen Nachfolger');
+                        $success = false;
+                    }
+                }
 
-                //return $this->redirectToRoute('lesson_list', array());
-                return $this->redirectToRoute('homepage', array());
+                //if next lesson is set, set the next' previous lesson
+                if(null != $lesson->getNextLesson()) {
+                    $nextLesson = $em->find(Lesson::class, $lesson->getNextLesson()->getId());
+                    //check if the next lesson already has a previous lesson
+                    if(null == $nextLesson->getPreviousLesson()) {
+                        $nextLesson->setPreviousLesson($lesson);
+                    } else {
+                        $this->addFlash('Error', 'Der Nachfolger hat bereits einen Vorgänger');
+                        $success = false;
+                    }
+                }
+
+                if($success) {
+                    $em->flush();
+                    $this->addFlash('Success', 'Übung angelegt');
+                    return $this->redirectToRoute('homepage', array());
+                } else {
+                    //ToDo: show new flash messages
+                }
             }
         }
 
