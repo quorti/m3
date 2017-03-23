@@ -2,4 +2,7 @@
 
 {% block body %}
     {{ include('lesson/_form.html.twig') }}
+    {% if msg is defined %}
+        {{ msg }}
+    {% endif %}
 {% endblock %}

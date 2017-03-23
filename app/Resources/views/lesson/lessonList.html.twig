@@ -1,5 +1,24 @@
-{% for lesson in lessons %}
-    <a href="/lesson/{{ lesson.id }}">
-        {{ lesson.name }}
-    </a>
-{% endfor %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/lessonList.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% for flash_message in app.session.flashBag.get('edit') %}
+        <div class="flash-error">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    <ul class="lessonList">
+        {% for lesson in lessons %}
+            <li>
+                <a href=" {{ path('edit_lesson', {'id': lesson.id }) }}">
+                    {{ lesson.name }}
+                </a>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

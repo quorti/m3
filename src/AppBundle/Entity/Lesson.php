@@ -25,7 +25,7 @@ class Lesson
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $link;
 

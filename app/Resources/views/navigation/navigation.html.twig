@@ -13,6 +13,10 @@
 
     <li id="login">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% if is_granted("ROLE_ADMIN") %}
+                <a href="{{ path('new_lesson') }}">Übung hinzufügen</a>
+                <a href="{{ path('lesson_list') }}">Übungen bearbeiten</a>
+            {% endif %}
             <a href="{{ path('fos_user_profile_show') }}">Profil</a>
             <a href="{{ path('fos_user_security_logout') }}">Logout</a>
         {% else %}

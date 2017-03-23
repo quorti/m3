@@ -7,44 +7,17 @@
 
 {% block body %}
 
-    {% for type, messages in app.session.flashBag.all %}
-        {% for message in messages %}
-            <div class="{{ type }}">
-                {{ message|trans({}, 'FOSUserBundle') }}
-            </div>
-        {% endfor %}
-    {% endfor %}
-
-    <iframe width="560" height="315" src="{{ link }}" frameborder="0" allowfullscreen></iframe>
+    {% if lesson.link is not null %}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ lesson.link }}" frameborder="0" allowfullscreen></iframe>
+    {% endif %}
     <h2 id="contentHeader">
-        {{ name }}
+        {{ lesson.name }}
     </h2>
     <div id="content">
-        {{ content }}
+        {{ lesson.content }}
     </div>
-{#
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-    aasdasd <br />
-#}
-    <!--div class="preNext">
-        <a href="/lesson/{{ previousID }}" id="previous">{{ previousText }} {{ previousName }}</a>
-        <a href="/lesson/{{ nextID }}" id="next">{{ nextName }} {{ nextText }}</a>
-    </div-->
+
+    <a href="{{ asset(lesson.file) }}" target="_blank">Anhang</a>
 
     <div class="preNext">
         {% if previousID is not null %}

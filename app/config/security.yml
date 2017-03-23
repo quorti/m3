@@ -59,9 +59,12 @@ security:
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
     access_control:
-      - {path: ^/localnetwork, roles: ROLE_USER_IP, ip: 192.168.178.20 }
+      #- { path: ^/localnetwork, roles: ROLE_USER_IP, ip: 192.168.178.20 }
+      - { path: ^/localnetwork, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/admin/, role: ROLE_ADMIN }
       - { path: ^/lessons/new, role: ROLE_ADMIN}
+      - { path: ^/lessons/list, role: ROLE_ADMIN}
+      - { path: ^/lessons/edit, role: ROLE_ADMIN}

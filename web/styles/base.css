@@ -119,3 +119,12 @@ body {
     text-decoration: blink;
     cursor: pointer;
 }
+
+.flash-error {
+    margin-left: 10px;
+    color: darkred;
+}
+
+.hidden-row {
+    display: none;
+}
