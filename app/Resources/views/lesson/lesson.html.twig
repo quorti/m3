@@ -28,7 +28,11 @@
                 </div>
             </a>
         {% endif %}
-
+        <div class="adminEdit">
+            {% if is_granted("ROLE_ADMIN") %}
+                <a href="{{ path('edit_lesson', {'id': lesson.id }) }}">Bearbeiten</a>
+            {% endif %}
+        </div>
         {% if nextID is not null %}
             <a id="next" href="/lesson/{{ nextID }}">
                 <div class="subNext">
